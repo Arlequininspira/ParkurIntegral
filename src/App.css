@@ -1,0 +1,454 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000;
+  color: #d1d1d1;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== WATERMARK ===== */
+.bg-watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 104vmin;
+  height: 104vmin;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: 0.1;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== LOGO ===== */
+.logo-section {
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-section a {
+  display: block;
+  width: 27.5%;
+  max-width: 360px;
+  min-width: 171px;
+}
+
+.logo-section img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* all content above watermark */
+.nav, .hero-section, .quienes-somos, .horarios-section,
+.mapa-section, .social-contacto, .footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== NAV ===== */
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  max-width: 1140px;
+  text-align: center;
+}
+
+.nav-link h6 {
+  font-family: 'Anton', sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 4em;
+  letter-spacing: 4px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.nav-link h6 a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in;
+}
+
+/* ===== HERO ===== */
+.hero-section {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.hero-section img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== QUIENES SOMOS ===== */
+.quienes-somos {
+  max-width: 1140px;
+  margin: 46px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.quienes-somos h3 {
+  color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 60px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.quienes-somos h3 {
+  animation: fadeInDown 0.8s ease-in;
+}
+
+.quienes-somos p {
+  color: #D1D1D1;
+  font-family: 'Roboto', sans-serif;
+  font-size: 19px;
+  text-align: center;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.btn-leer-mas {
+  display: inline-block;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1em;
+  letter-spacing: -0.2px;
+  background-color: #faa650;
+  color: #fff;
+  padding: calc(0.667em + 2px) calc(1.333em + 2px);
+  border-radius: 8px;
+  margin-top: 20px;
+  transition: opacity 0.2s;
+}
+
+.btn-leer-mas:hover {
+  opacity: 0.85;
+}
+
+/* ===== HORARIOS ===== */
+.horarios-section {
+  display: flex;
+  justify-content: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.horarios-section img {
+  width: 89.781%;
+  max-width: 1024px;
+  height: auto;
+  display: block;
+}
+
+/* ===== MAPA ===== */
+.mapa-section {
+  min-height: 586px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.mapa-section h3 {
+  color: #fff;
+  font-family: 'Anton', sans-serif;
+  font-size: 60px;
+  font-weight: 500;
+  padding: 30px 0 20px;
+}
+
+.mapa-section iframe {
+  width: 100%;
+  height: 552px;
+  border: none;
+  display: block;
+}
+
+/* ===== SOCIAL / CONTACTO ===== */
+.social-contacto {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.social-contacto-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4%;
+  width: 100%;
+  align-items: center;
+  padding: 0 9%;
+  box-sizing: border-box;
+}
+
+.social-col img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  font-size: 17px;
+  color: #fff;
+  padding: 0.8em;
+  box-sizing: content-box;
+}
+
+.social-icon.fb {
+  background-color: #3b5998;
+}
+
+.social-icon.ig {
+  background-color: #ff8e8e;
+}
+
+.social-icon:hover {
+  opacity: 0.85;
+}
+
+.seguinos-heading {
+  color: #fff;
+  font-family: 'Anton', sans-serif;
+  font-weight: 500;
+  font-size: 52px;
+  margin-top: 8px;
+}
+
+.contacto-col {
+  padding: 10px;
+}
+
+.contacto-col img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: scale(1.15) translateY(5%);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.footer p {
+  color: #aaa;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.whatsapp-tooltip {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.whatsapp-btn {
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-btn svg {
+  width: 32px;
+  height: 32px;
+  fill: #fff;
+}
+
+/* ===== QUIENES SOMOS PAGE ===== */
+.qs-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.qs-section {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.qs-section h2 {
+  color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 42px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+.qs-section p {
+  color: #d1d1d1;
+  font-family: 'Roboto', sans-serif;
+  font-size: 19px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 767px) {
+  /* Logo */
+  .logo-section {
+    padding-top: 20px;
+  }
+
+  .logo-section a {
+    width: 85%;
+    max-width: 85%;
+    min-width: unset;
+  }
+
+  /* Nav: stack vertically, no spacer cols */
+  .nav-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-inner > div:first-child,
+  .nav-inner > div:last-child {
+    display: none;
+  }
+
+  .nav-link h6 {
+    font-size: 22px;
+    line-height: 2.5em;
+    letter-spacing: 3px;
+  }
+
+  /* Quienes somos */
+  .quienes-somos h3 {
+    font-size: clamp(42px, 12vw, 72px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .quienes-somos p {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  /* Horarios */
+  .horarios-section {
+    padding: 0;
+  }
+
+  .horarios-section img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Mapa */
+  .mapa-section h3 {
+    font-size: clamp(36px, 12vw, 60px);
+    line-height: 1.1;
+  }
+
+  .mapa-section iframe {
+    height: 400px;
+  }
+
+  /* Social/Contacto: 1 columna full width */
+  .social-contacto-inner {
+    grid-template-columns: 1fr;
+    padding: 0 5%;
+    gap: 20px;
+  }
+
+  .social-col img {
+    width: 100%;
+  }
+
+  .contacto-col {
+    padding: 0;
+  }
+
+  .contacto-col img {
+    transform: none;
+  }
+}
