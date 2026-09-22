@@ -1,4 +1,4 @@
-import horarioImg from '../../Img/horario-parkour-4-768x598.png'
+import horarioImg from '../../Img/horario-parkour-2026.jpg'
 
 export default function Horarios() {
   return (
@@ -8,8 +8,8 @@ export default function Horarios() {
         <img
           src={horarioImg}
           alt="Horarios de clases de Parkour"
-          width="768"
-          height="598"
+          width="1024"
+          height="1024"
           loading="lazy"
         />
       </section>
