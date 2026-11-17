@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { useReveal } from '../hooks'
 
 export default function QuienesSomosPage() {
+  useReveal()
   return (
     <>
       <Helmet>
@@ -14,12 +15,13 @@ export default function QuienesSomosPage() {
         />
       </Helmet>
 
-      <Header hideNav />
-
       <main className="qs-page">
+        <header className="qs-hero" data-reveal>
+          <h1 className="section-title">Escuela Integral de Parkour</h1>
+        </header>
 
         {/* ===== QUIÉNES SOMOS ===== */}
-        <section className="qs-section">
+        <section className="qs-section" data-reveal>
           <h2>¿Quiénes somos?</h2>
           <p>Somos la Escuela Integral de Parkour! y nuestro propósito es lograr tu evolución personal desde la práctica física.</p>
           <p>Con más de 20 años de experiencia te garantizamos una práctica segura, donde tu integridad física va a ser respetada al 100% para que logres vivir una experiencia única de auto superación de manera agradable y divertida.<br />Parkour es el arte de superarse a uno mismo, desde el movimiento generamos superación no solo en la práctica física sino también en la vida cotidiana.</p>
@@ -29,7 +31,7 @@ export default function QuienesSomosPage() {
         </section>
 
         {/* ===== PARKOUR ES PELIGROSO ===== */}
-        <section className="qs-section">
+        <section className="qs-section" data-reveal>
           <h2>¿El parkour es peligroso?</h2>
           <p>Lamentablemente, en la comunidad muchos deciden arriesgar la vida en sus pruebas, es por eso que la Escuela Integral difunde la importancia del valor a la vida y de no cometer actos desde el Ego.</p>
           <p>Que un like en las redes sociales no se transforme en el motivo que nos lleve a hacer tonterías.</p>
@@ -44,7 +46,7 @@ export default function QuienesSomosPage() {
         </section>
 
         {/* ===== LOS INICIOS EN ARGENTINA ===== */}
-        <section className="qs-section">
+        <section className="qs-section" data-reveal>
           <h2>Los inicios en Argentina</h2>
           <p>Parkour llega a la Argentina en el año 1999 a través de un documental del grupo pionero Francés "Yamakasi".</p>
           <p>Josué Di Stefano siendo tan solo un niño de 11 años y sin saber que era quizás el único practicante Argentino en ese momento, iniciaba sus prácticas en parques públicos.</p>
@@ -65,8 +67,8 @@ export default function QuienesSomosPage() {
           <p>Si queres ver mas contenido, seguinos en las redes sociales! así estás al tanto de todo lo que sucede en EipK!</p>
         </section>
 
-        <div style={{ textAlign: 'center', padding: '20px 0 40px' }}>
-          <Link to="/" className="btn-leer-mas">Volver al inicio</Link>
+        <div className="center">
+          <Link to="/" className="btn btn--primary">Volver al inicio</Link>
         </div>
 
       </main>
