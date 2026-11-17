@@ -1,8 +1,8 @@
-import LakesideScene from './LakesideScene'
+import CityScene from './CityScene'
 import BlurText from './rb/BlurText'
 import ShinyText from './rb/ShinyText'
 import Icon from './Icon'
-import logo from '../../Img/Escudo-Parkour-blanco-fondo-negro-01-768x768.png'
+import logo from '../assets/logo-nuevo.webp'
 import { WHATSAPP_URL } from '../constants'
 
 const COLONIA_URL = `${WHATSAPP_URL}${encodeURIComponent('¡Hola! Quiero inscribirme a la Colonia de verano.')}`
@@ -10,11 +10,11 @@ const COLONIA_URL = `${WHATSAPP_URL}${encodeURIComponent('¡Hola! Quiero inscrib
 export default function Hero() {
   return (
     <section className="hero" id="inicio">
-      <LakesideScene />
+      <CityScene />
       <div className="hero-content">
         <div className="hero-logo">
           <span className="hero-logo-halo" aria-hidden="true" />
-          <img src={logo} alt="Escudo de la Escuela Integral de Parkour" width="768" height="768" fetchPriority="high" />
+          <img src={logo} alt="Escudo de la Escuela Integral de Parkour" width="770" height="907" fetchPriority="high" />
         </div>
         <h1 className="hero-title">
           <BlurText text="Escuela Integral de Parkour" delay={90} animateBy="words" direction="bottom" as="span" />

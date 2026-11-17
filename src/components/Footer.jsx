@@ -1,4 +1,4 @@
-import logo from '../../Img/Escudo-Parkour-blanco-fondo-negro-01-768x768.png'
+import logo from '../assets/logo-nuevo.webp'
 
 export default function Footer() {
   return (

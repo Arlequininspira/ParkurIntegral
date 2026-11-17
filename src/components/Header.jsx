@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import logo from '../../Img/Escudo-Parkour-blanco-fondo-negro-01-768x768.png'
+import logo from '../assets/logo-nuevo.webp'
 import { WHATSAPP_URL } from '../constants'
 
 const LINKS = [

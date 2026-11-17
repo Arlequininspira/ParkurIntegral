@@ -1,0 +1,80 @@
+.city {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #060914;
+}
+.city svg { width: 100%; height: 100%; display: block; }
+.city-fade {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 14%;
+  background: linear-gradient(to bottom, transparent, var(--bg, #0b0a12));
+  pointer-events: none;
+}
+
+/* Cielo */
+.ct-star { fill: #fff; animation: ct-twinkle 3.2s ease-in-out infinite alternate; }
+@keyframes ct-twinkle {
+  0%, 25% { opacity: 0.15; }
+  100% { opacity: 0.95; }
+}
+.ct-split { animation: ct-split 14s ease-in-out infinite alternate; }
+@keyframes ct-split {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+.ct-glow {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: ct-glow 6s ease-in-out infinite;
+}
+@keyframes ct-glow {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.07); }
+}
+.ct-ring {
+  fill: none;
+  stroke: #ffd6cf;
+  stroke-opacity: 0.22;
+  stroke-width: 1.5;
+  stroke-dasharray: 2 14;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: ct-spin 90s linear infinite;
+}
+@keyframes ct-spin { to { transform: rotate(360deg); } }
+
+.ct-cloud {
+  animation-name: ct-cloud;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes ct-cloud {
+  from { transform: translateX(-560px); }
+  to { transform: translateX(1720px); }
+}
+
+/* Ciudad */
+.ct-win { opacity: 0.8; }
+.ct-win--flick { animation: ct-flick 9s steps(1) infinite; }
+@keyframes ct-flick {
+  0%, 62% { opacity: 0.85; }
+  63%, 78% { opacity: 0.08; }
+  79%, 100% { opacity: 0.85; }
+}
+.ct-beacon { fill: #ff3b30; animation: ct-beacon 2.4s ease-in-out infinite; }
+@keyframes ct-beacon {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .city * { animation: none !important; }
+}
+
+/* Traceurs: buzo con capucha y jogger, en silueta */
+.ct-p { stroke-linecap: round; stroke-linejoin: round; }
+.ct-p--stroke { fill: none; stroke: #05070e; }
+.ct-p--fill { fill: #05070e; stroke: #05070e; stroke-width: 2.5; }
+.ct-p.is-far { stroke: #1b2140; }

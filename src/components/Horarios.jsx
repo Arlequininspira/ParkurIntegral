@@ -1,10 +1,7 @@
-import iconPekes from '../assets/horarios/pekes.webp'
-import iconNinos from '../assets/horarios/ninos.webp'
-import iconJuveniles from '../assets/horarios/juveniles.webp'
-import iconAdultos from '../assets/horarios/adultos.webp'
-import iconVerdes from '../assets/horarios/verdes.webp'
 import flyer from '../../Img/horario-parkour-2026.jpg'
+import { useState } from 'react'
 import Icon from './Icon'
+import ScheduleIcon from './ScheduleIcon'
 import { WHATSAPP_URL } from '../constants'
 
 /*
@@ -16,7 +13,6 @@ const GRUPOS = [
     id: 'pekes',
     nombre: 'Pekes',
     edad: '4–5 años',
-    icon: iconPekes,
     color: '#f7953a',
     turnos: [{ dias: ['Lun', 'Jue'], hora: '16:45' }],
   },
@@ -24,7 +20,6 @@ const GRUPOS = [
     id: 'ninos',
     nombre: 'Niños',
     edad: '6–10 años',
-    icon: iconNinos,
     color: '#2196f3',
     turnos: [
       { dias: ['Mar', 'Mié', 'Vie'], hora: '17:00' },
@@ -37,7 +32,6 @@ const GRUPOS = [
     id: 'juveniles',
     nombre: 'Juveniles',
     edad: '11–16 años',
-    icon: iconJuveniles,
     color: '#2fbf5f',
     turnos: [
       { dias: ['Mar', 'Jue'], hora: '18:00' },
@@ -48,7 +42,6 @@ const GRUPOS = [
     id: 'adultos',
     nombre: 'Adultos',
     edad: null,
-    icon: iconAdultos,
     color: '#f2552c',
     turnos: [
       { dias: ['Mar', 'Jue'], hora: '10:00' },
@@ -60,7 +53,6 @@ const GRUPOS = [
     nombre: 'Espacios Verdes',
     sub: 'Niños',
     edad: '6–11 años',
-    icon: iconVerdes,
     color: '#1e9be8',
     turnos: [{ dias: ['Mar', 'Jue'], hora: '17:00' }],
   },
@@ -70,6 +62,7 @@ const waLink = (grupo) =>
   `${WHATSAPP_URL}${encodeURIComponent(`¡Hola! Quiero info de las clases de ${grupo.nombre}${grupo.sub ? ` ${grupo.sub}` : ''}${grupo.edad ? ` (${grupo.edad})` : ''}.`)}`
 
 export default function Horarios() {
+  const [hover, setHover] = useState(null)
   return (
     <section className="section horarios" id="horarios">
       <div className="container">
@@ -85,8 +78,12 @@ export default function Horarios() {
               className="grupo"
               style={{ '--grupo': g.color, transitionDelay: `${i * 70}ms` }}
               data-reveal
+              onMouseEnter={() => setHover(g.id)}
+              onMouseLeave={() => setHover(null)}
+              onFocus={() => setHover(g.id)}
+              onBlur={() => setHover(null)}
             >
-              <img className="grupo-icon" src={g.icon} alt="" width="196" height="196" loading="lazy" />
+              <ScheduleIcon id={g.id} accent={g.color} active={hover === g.id} />
               <div className="grupo-info">
                 <h3>
                   {g.nombre}

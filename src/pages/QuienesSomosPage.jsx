@@ -1,7 +1,83 @@
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Footer from '../components/Footer'
+import CityScene from '../components/CityScene'
+import Icon from '../components/Icon'
+import { WHATSAPP_URL } from '../constants'
 import { useReveal } from '../hooks'
+
+const VALORES = ['Fortaleza', 'Salud', 'Conciencia', 'Disciplina', 'Honor', 'Integridad', 'Lealtad', 'Evolución']
+
+const SEGURIDAD = [
+  {
+    icon: 'shield',
+    title: 'Consciencia, no ego',
+    text: 'Estamos en contra de las pruebas con riesgo de vida. Que un like no sea el motivo para hacer tonterías.',
+  },
+  {
+    icon: 'route',
+    title: 'Método paso a paso',
+    text: 'Las técnicas complejas se aprenden de manera escalonada, fluida y sin riesgos.',
+  },
+  {
+    icon: 'users',
+    title: 'Con guías capacitados',
+    text: 'Aprender solo en la calle llevó a muchos a lesiones graves. Se aprende con alguien avalado y con trayectoria.',
+  },
+  {
+    icon: 'home',
+    title: 'Volver a casa sano',
+    text: 'Lo gratificante es entrenar sabiendo que volvés con el cuerpo sano.',
+  },
+]
+
+const HITOS = [
+  {
+    year: '1999',
+    title: 'El parkour llega a la Argentina',
+    text: 'Un documental del grupo francés Yamakasi lo trae al país. Josué Di Stefano, con 11 años, empieza a entrenar en parques públicos, con videos de 5 segundos conseguidos en el viejo ARES.',
+  },
+  {
+    year: '2000',
+    title: 'Walter Bongard',
+    text: 'Empieza a entrenar en distintos puntos de la ciudad y a difundir la disciplina para sumar practicantes.',
+  },
+  {
+    year: '2004',
+    title: 'Se cruzan los caminos',
+    text: 'Walter, que lideraba las reuniones de traceurs de todo el país, conoce a Josué. Juntos dan inicio a una historia sin precedentes.',
+  },
+  {
+    year: '2006',
+    title: 'El legado',
+    text: 'Walter le otorga a Josué el legado de su grupo. Josué pasa a guiar a los grupos y a transmitir el arte del desplazamiento en toda la región.',
+  },
+  {
+    year: '2008',
+    title: 'Primer espacio techado',
+    text: 'Josué abre el primer espacio equipado para practicar de forma segura: Oxígeno Gym, donde nace la Escuela Integral.',
+  },
+  {
+    year: '2011',
+    title: 'Tecnópolis',
+    text: 'Durante 2 años, cientos de personas entrenan con nosotros en el mítico "Espacio Joven".',
+  },
+  {
+    year: '2013',
+    title: 'Espacio Zero',
+    text: 'Abrimos las puertas de Espacio Zero (escuela de circo) para ampliar la enseñanza de la actividad.',
+  },
+  {
+    year: '2015',
+    title: 'Clases para todas las edades',
+    text: 'Empiezan las clases para pequeños, niños y adolescentes. Emma Grasset, coordinadora y vicedirectora, guía la actividad junto a Josué.',
+  },
+  {
+    year: 'Hoy',
+    title: 'Una comunidad que no para',
+    text: 'Cientos de practicantes activos y más de 32 mil seguidores en redes, brindando el mejor entrenamiento de Latinoamérica.',
+  },
+]
 
 export default function QuienesSomosPage() {
   useReveal()
@@ -15,62 +91,103 @@ export default function QuienesSomosPage() {
         />
       </Helmet>
 
-      <main className="qs-page">
-        <header className="qs-hero" data-reveal>
-          <h1 className="section-title">Escuela Integral de Parkour</h1>
+      <main className="qs">
+        {/* ===== PORTADA con la ciudad animada ===== */}
+        <header className="qs-cover">
+          <CityScene />
+          <div className="qs-cover-scrim" aria-hidden="true" />
+          <div className="qs-cover-text container">
+            <p className="qs-kicker">Escuela Integral de Parkour</p>
+            <h1>Nuestra historia</h1>
+            <p>Más de 20 años transmitiendo el arte del desplazamiento en Buenos Aires.</p>
+          </div>
         </header>
 
         {/* ===== QUIÉNES SOMOS ===== */}
-        <section className="qs-section" data-reveal>
-          <h2>¿Quiénes somos?</h2>
-          <p>Somos la Escuela Integral de Parkour! y nuestro propósito es lograr tu evolución personal desde la práctica física.</p>
-          <p>Con más de 20 años de experiencia te garantizamos una práctica segura, donde tu integridad física va a ser respetada al 100% para que logres vivir una experiencia única de auto superación de manera agradable y divertida.<br />Parkour es el arte de superarse a uno mismo, desde el movimiento generamos superación no solo en la práctica física sino también en la vida cotidiana.</p>
-          <p>Parkour es sinónimo de fortaleza, salud, conciencia, disciplina, honor, integridad, lealtad y Evolución.</p>
-          <p>Parkour se encuentra en todo lo que hacemos, parkour es un espejo de nosotros mismos, parkour nos enseña a ver las fallas para aprender a superar cualquier tipo de obstáculo.</p>
-          <p>Parkour es la evolución misma, parkour es nueva Era.</p>
+        <section className="qs-block container">
+          <div className="qs-intro" data-reveal>
+            <h2 className="qs-h2">¿Quiénes somos?</h2>
+            <p className="qs-lead">
+              Nuestro propósito es lograr <strong>tu evolución personal desde la práctica física.</strong>
+            </p>
+            <p>
+              Con más de 20 años de experiencia te garantizamos una práctica segura y divertida, donde tu integridad
+              física se respeta al 100%. Parkour es el arte de superarse a uno mismo: lo que superás en el movimiento lo
+              llevás a la vida cotidiana.
+            </p>
+          </div>
+          <div className="qs-values" data-reveal>
+            <p className="qs-values-label">Parkour es sinónimo de</p>
+            <ul>
+              {VALORES.map((v) => (
+                <li key={v}>{v}</li>
+              ))}
+            </ul>
+            <blockquote>
+              “Parkour es un espejo de nosotros mismos: nos enseña a ver las fallas para superar cualquier obstáculo.
+              Parkour es la evolución misma.”
+            </blockquote>
+          </div>
         </section>
 
-        {/* ===== PARKOUR ES PELIGROSO ===== */}
-        <section className="qs-section" data-reveal>
-          <h2>¿El parkour es peligroso?</h2>
-          <p>Lamentablemente, en la comunidad muchos deciden arriesgar la vida en sus pruebas, es por eso que la Escuela Integral difunde la importancia del valor a la vida y de no cometer actos desde el Ego.</p>
-          <p>Que un like en las redes sociales no se transforme en el motivo que nos lleve a hacer tonterías.</p>
-          <p>Es mucho más gratificante realizar una práctica donde sabemos que vamos a regresar a casa con el cuerpo sano, que practicar algo que tarde o temprano nos lleve a una tragedia.</p>
-          <p>La Escuela Integral de Parkour está en contra totalmente de las pruebas con riesgo de vida. Si bien realizamos pruebas acrobáticas complejas existe un proceso para llevar a cabo dichas técnicas de manera escalonada fluida y sin riesgos.</p>
-          <p>Andar en edificios saltando como locos es de inconscientes.</p>
-          <p>La Escuela Integral de Parkour es igual a Consciencia del entorno y de uno mismo.</p>
-          <p>Parkour es una actividad que hay que aprenderla sí o sí con alguien capacitado avalado por algún centro de entrenamiento específico de parkour con trayectoria.</p>
-          <p>Muchos dicen que el parkour se aprende en las calles y sin guías. Ese es un gran error ya que en el pasado al no haber guías las personas iniciaban sus entrenamientos por cuenta propia y así muchas terminaban con graves lesiones.</p>
-          <p>Es por eso que desarrollamos un Método de entrenamiento el cual permite que el alumno/a recorra paso a paso y de manera armónica su aprendizaje.</p>
-          <p>Parkour es una actividad totalmente segura guiada por profesionales.</p>
+        {/* ===== ¿ES PELIGROSO? ===== */}
+        <section className="qs-block qs-safe">
+          <div className="container">
+            <header className="qs-safe-head" data-reveal>
+              <h2 className="qs-h2">¿El parkour es peligroso?</h2>
+              <p className="qs-answer">
+                Con método, es una actividad <strong>totalmente segura</strong> guiada por profesionales.
+              </p>
+            </header>
+            <ul className="qs-cards">
+              {SEGURIDAD.map((c, i) => (
+                <li key={c.title} className="qs-card" data-reveal style={{ transitionDelay: `${i * 90}ms` }}>
+                  <span className="qs-card-icon">
+                    <Icon name={c.icon} size={22} />
+                  </span>
+                  <h3>{c.title}</h3>
+                  <p>{c.text}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="qs-safe-foot" data-reveal>
+              Por eso desarrollamos un <strong>Método de entrenamiento</strong> para que cada alumno/a recorra su
+              aprendizaje paso a paso y de manera armónica. <em>Escuela Integral es igual a consciencia del entorno y de uno mismo.</em>
+            </p>
+          </div>
         </section>
 
-        {/* ===== LOS INICIOS EN ARGENTINA ===== */}
-        <section className="qs-section" data-reveal>
-          <h2>Los inicios en Argentina</h2>
-          <p>Parkour llega a la Argentina en el año 1999 a través de un documental del grupo pionero Francés "Yamakasi".</p>
-          <p>Josué Di Stefano siendo tan solo un niño de 11 años y sin saber que era quizás el único practicante Argentino en ese momento, iniciaba sus prácticas en parques públicos.</p>
-          <p>Sin redes sociales ni celulares en ese entonces la información era muy escasa y valiosa, Josué siempre cuenta anécdotas de cómo con mucha suerte conseguía videos de 5 segundos obtenidos en el olvidado ARES.</p>
-          <p>En el año 2000 aproximadamente Walter Bongard iniciaba sus entrenamientos en diferentes puntos de la ciudad queriendo expandir la cantidad de practicantes realizando acciones de difusión.</p>
-          <p>A finales del 2004 Walter Bongard y Josué Di Stefano cruzaron sus caminos sin saber que juntos iban a dar inicio a una historia sin precedentes.</p>
-          <p>Walter Bongard había formado a lo largo de los años reuniones que nucleaba a diferentes Traceurs (Practicantes) de todo el país. Él era el líder de la actividad a nivel grupal en ese entonces.</p>
-          <p>Por motivos personales, Walter Bongard decide en el año 2006 otorgarle el legado de su grupo y la difusión de la disciplina a Josué Di Stefano.</p>
-          <p>Josue siempre cuenta las historias junto a Walter Bongard y todas las enseñanzas de vida que recibió en los años que entrenaron juntos.</p>
-          <p>Fue así como Josué inició a guiar a los diferentes grupos convirtiéndose en la única persona que nucleaba practicantes y transmitía el arte del desplazamiento en toda la región.</p>
-          <p>En el año 2008 Josué decidió dar un paso enorme de evolución con respecto a la estructura de enseñanza que brindaba. Abrió el primer espacio techado para practicar la disciplina, totalmente equipado para transmitir un servicio mucho más seguro.</p>
-          <p>"Oxígeno Gym" fue el primer espacio donde se puso en marcha la evolución del proyecto Escuela Integral.</p>
-          <p>En el año 2011, la Escuela Integral siguió creciendo concretando la actividad en el fantástico Tecnópolis. Allí se dio actividad a cientos de personas a lo largo de 2 años en el mítico "Espacio Joven".</p>
-          <p>En el año 2013 se abrieron las puertas de Espacio Zero (Escuela de circo) para amplificar la difusión y enseñanza de la actividad.</p>
-          <p>En el año 2015 Escuela Integral estaba lista para crear un antes y un después en sus actividades. Fue así como dimos inicio a las clases para Pequeños, Niños y Adolescentes.</p>
-          <p>Emma Grasset, Coordinadora de las clases para los más pequeños y Vicedirectora de la Escuela Integral, guía la actividad junto a Josue Di Stefano desde ese entonces.</p>
-          <p>En el 2021, la Escuela integral tiene cientos de practicantes activos y más de 32 mil seguidores en las redes sociales, continúan con la actividad brindando el mejor servicio de entrenamiento de latino América.</p>
-          <p>Si queres ver mas contenido, seguinos en las redes sociales! así estás al tanto de todo lo que sucede en EipK!</p>
+        {/* ===== LÍNEA DE TIEMPO ===== */}
+        <section className="qs-block container">
+          <h2 className="qs-h2" data-reveal>
+            Los inicios en Argentina
+          </h2>
+          <ol className="qs-timeline">
+            {HITOS.map((h) => (
+              <li key={h.year} data-reveal>
+                <span className="qs-year">{h.year}</span>
+                <div className="qs-hito">
+                  <h3>{h.title}</h3>
+                  <p>{h.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </section>
 
-        <div className="center">
-          <Link to="/" className="btn btn--primary">Volver al inicio</Link>
-        </div>
-
+        {/* ===== CIERRE ===== */}
+        <section className="qs-end container" data-reveal>
+          <h2>Sumate a la historia</h2>
+          <p>Seguinos en redes para estar al tanto de todo lo que pasa en EipK, o reservá tu clase de prueba.</p>
+          <div className="qs-end-actions">
+            <a className="btn btn--primary" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              Reservá tu clase <Icon name="arrow" size={18} />
+            </a>
+            <Link to="/" className="btn btn--ghost">
+              Volver al inicio
+            </Link>
+          </div>
+        </section>
       </main>
 
       <Footer />
