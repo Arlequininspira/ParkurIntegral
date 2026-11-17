@@ -5,6 +5,8 @@ import Icon from './Icon'
 import logo from '../../Img/Escudo-Parkour-blanco-fondo-negro-01-768x768.png'
 import { WHATSAPP_URL } from '../constants'
 
+const COLONIA_URL = `${WHATSAPP_URL}${encodeURIComponent('¡Hola! Quiero inscribirme a la Colonia de verano.')}`
+
 export default function Hero() {
   return (
     <section className="hero" id="inicio">
@@ -28,6 +30,12 @@ export default function Hero() {
             Ver horarios
           </a>
         </div>
+        <a className="hero-colonia" href={COLONIA_URL} target="_blank" rel="noopener noreferrer">
+          <span className="hero-colonia-tag">Colonia de verano</span>
+          <span className="hero-colonia-cta">
+            Inscribite <Icon name="arrow" size={16} />
+          </span>
+        </a>
       </div>
       <a className="hero-scroll" href="#escuela" aria-label="Bajar a La escuela">
         <span />

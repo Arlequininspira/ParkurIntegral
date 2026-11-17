@@ -4,7 +4,7 @@ import Icon from './Icon'
 
 const STATS = [
   { to: 20, prefix: '+', label: 'años de experiencia' },
-  { to: 26300, prefix: '+', separator: '.', label: 'seguidores en redes' },
+  { to: 32000, prefix: '+', separator: '.', label: 'seguidores en redes' },
   { to: 2008, label: 'abrimos el primer espacio techado' },
 ]
 

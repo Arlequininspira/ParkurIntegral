@@ -63,7 +63,7 @@ export default function QuienesSomosPage() {
           <p>En el año 2013 se abrieron las puertas de Espacio Zero (Escuela de circo) para amplificar la difusión y enseñanza de la actividad.</p>
           <p>En el año 2015 Escuela Integral estaba lista para crear un antes y un después en sus actividades. Fue así como dimos inicio a las clases para Pequeños, Niños y Adolescentes.</p>
           <p>Emma Grasset, Coordinadora de las clases para los más pequeños y Vicedirectora de la Escuela Integral, guía la actividad junto a Josue Di Stefano desde ese entonces.</p>
-          <p>En el 2021, la Escuela integral tiene cientos de practicantes activos y más de 26.300 mil seguidores en las redes sociales, continúan con la actividad brindando el mejor servicio de entrenamiento de latino América.</p>
+          <p>En el 2021, la Escuela integral tiene cientos de practicantes activos y más de 32 mil seguidores en las redes sociales, continúan con la actividad brindando el mejor servicio de entrenamiento de latino América.</p>
           <p>Si queres ver mas contenido, seguinos en las redes sociales! así estás al tanto de todo lo que sucede en EipK!</p>
         </section>
 
