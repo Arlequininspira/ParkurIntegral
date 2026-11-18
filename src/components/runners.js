@@ -153,7 +153,7 @@ export function buildRoute(platforms, { dir = 1, speed = 180, scale = 1, flip = 
     const yEnd = yAt(pl, end)
     /* solo sigue corriendo si hay piso continuo; cualquier hueco real se salta */
     if (next && gap < minGap && Math.abs(yAt(next, edge(next, false)) - yEnd) < minStep) {
-      segs.push({ type: 'run', x0, x1: end, y0, y1: yEnd })
+      segs.push({ type: 'run', x0, x1: end, y0, y1: yEnd, bridge: pl.kind === 'bridge' })
       x = edge(next, false)
       continue
     }
@@ -164,7 +164,7 @@ export function buildRoute(platforms, { dir = 1, speed = 180, scale = 1, flip = 
     }
     const takeoff = end - dir * 6 * scale
     const ty = yAt(pl, takeoff)
-    segs.push({ type: 'run', x0, x1: takeoff, y0, y1: ty })
+    segs.push({ type: 'run', x0, x1: takeoff, y0, y1: ty, bridge: pl.kind === 'bridge' })
     const land = edge(next, false) + dir * 18 * scale
     const ly = yAt(next, clampX(next, land))
     const dist = Math.abs(land - takeoff)
@@ -184,6 +184,17 @@ export function buildRoute(platforms, { dir = 1, speed = 180, scale = 1, flip = 
     }
     s.nextJump = segs[i + 1]?.type === 'jump'
     t += s.dur
+  })
+  /* rodadas: en los puentes y al caer de un salto con desnivel (una sí, una no) */
+  const ROLL = 0.6
+  let drops = 0
+  segs.forEach((s, i) => {
+    if (s.type !== 'run' || s.dur < ROLL + 0.35) return
+    if (s.bridge) s.roll = { start: s.dur / 2 - ROLL / 2, len: ROLL }
+    else if (s.prevJump) {
+      const jp = segs[i - 1]
+      if (jp.y1 - jp.y0 > 10 * scale && drops++ % 2 === 0) s.roll = { start: 0.03, len: ROLL }
+    }
   })
   return { segs, total: t + pause, dir, scale, stride: 46 * scale }
 }
@@ -215,7 +226,15 @@ export function runnerAt(route, time) {
   let c = 0
   let rot = 0
   let ju = 0
-  if (seg.type === 'run') {
+  let roll = 0
+  if (seg.type === 'run' && seg.roll && el >= seg.roll.start && el < seg.roll.start + seg.roll.len) {
+    /* rodada: se hace bolita y gira 360° hacia adelante, apoyado en el piso */
+    const ur = (el - seg.roll.start) / seg.roll.len
+    roll = Math.min(1, ur / 0.18, (1 - ur) / 0.18)
+    j = roll
+    ju = 0.46
+    rot = 360 * smooth(Math.min(1, Math.max(0, (ur - 0.08) / 0.84)))
+  } else if (seg.type === 'run') {
     /* amortigua la caída: más fuerte cuanto más alto venía */
     if (seg.prevJump && el < 0.26) c = Math.sin((el / 0.26) * Math.PI) * seg.impact
     /* anticipación: se carga antes de saltar */
@@ -231,5 +250,8 @@ export function runnerAt(route, time) {
   const vy = b ? (y - b.y) / 0.05 : 0
   const lag = Math.max(-1, Math.min(1, vy / (300 * route.scale)))
   const p = ((route.dir * x) / route.stride) * Math.PI
-  return { x, y, rot, ...pose(p, j, c, ju, lag) }
+  const ps = pose(p, j, c, ju, lag)
+  /* en la rodada gira alrededor del centro del cuerpo encogido, que va a ras del piso */
+  if (roll > 0) ps.cy = lerp(ps.cy, -40, roll)
+  return { x, y: y + 18 * route.scale * roll, rot, ...ps }
 }

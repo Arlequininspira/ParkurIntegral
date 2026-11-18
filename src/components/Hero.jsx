@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import CityScene from './CityScene'
 import BlurText from './rb/BlurText'
 import ShinyText from './rb/ShinyText'
@@ -8,13 +9,29 @@ import { WHATSAPP_URL } from '../constants'
 const COLONIA_URL = `${WHATSAPP_URL}${encodeURIComponent('¡Hola! Quiero inscribirme a la Colonia de verano.')}`
 
 export default function Hero() {
+  const ref = useRef(null)
+
+  /* mientras se ve el hero, el WhatsApp flotante se esconde en mobile (no tapa los botones) */
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(([e]) => document.body.classList.toggle('hero-in-view', e.intersectionRatio > 0.5), {
+      threshold: [0, 0.5, 1],
+    })
+    io.observe(el)
+    return () => {
+      io.disconnect()
+      document.body.classList.remove('hero-in-view')
+    }
+  }, [])
+
   return (
-    <section className="hero" id="inicio">
+    <section className="hero" id="inicio" ref={ref}>
       <CityScene />
       <div className="hero-content">
         <div className="hero-logo">
           <span className="hero-logo-halo" aria-hidden="true" />
-          <img src={logo} alt="Escudo de la Escuela Integral de Parkour" width="770" height="907" fetchPriority="high" />
+          <img src={logo} alt="Escudo de la Escuela Integral de Parkour" width="1120" height="1317" fetchPriority="high" />
         </div>
         <h1 className="hero-title">
           <BlurText text="Escuela Integral de Parkour" delay={90} animateBy="words" direction="bottom" as="span" />

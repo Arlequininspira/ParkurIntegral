@@ -173,7 +173,7 @@ function genRow(r, o) {
       let rail = `M${f(bx0)} ${f(rightY - 9)}H${f(bx1)}`
       for (let px = bx0; px <= bx1; px += 8) rail += `M${f(px)} ${f(rightY - 9)}V${f(rightY)}`
       line(rail, o.line, 1.1)
-      plats.push({ x0: bx0, x1: bx1, yL: rightY, yR: rightY })
+      plats.push({ x0: bx0, x1: bx1, yL: rightY, yR: rightY, kind: 'bridge' })
       forceFlat = rightY
     }
     x += w + gap
