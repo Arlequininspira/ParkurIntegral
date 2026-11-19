@@ -216,7 +216,7 @@ img { max-width: 100%; display: block; }
 .hero-logo {
   position: relative;
   width: clamp(150px, 27vh, 280px);
-  aspect-ratio: 1120 / 1317;
+  aspect-ratio: 1267 / 1274;
   animation: logo-in 1.6s var(--ease-out) both;
 }
 .hero-logo img {

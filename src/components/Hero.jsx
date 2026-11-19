@@ -31,7 +31,7 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-logo">
           <span className="hero-logo-halo" aria-hidden="true" />
-          <img src={logo} alt="Escudo de la Escuela Integral de Parkour" width="1120" height="1317" fetchPriority="high" />
+          <img src={logo} alt="Escudo de la Escuela Integral de Parkour" width="1267" height="1274" fetchPriority="high" />
         </div>
         <h1 className="hero-title">
           <BlurText text="Escuela Integral de Parkour" delay={90} animateBy="words" direction="bottom" as="span" />
